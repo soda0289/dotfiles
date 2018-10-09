@@ -8,3 +8,5 @@ fi
 # VI Mode
 set -o vi
 set show-mode-in-prompt on
+
+export EDITOR=vim
