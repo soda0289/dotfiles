@@ -2,7 +2,7 @@ set laststatus=2
 
 syntax enable
 set background=dark
-colorscheme slate
+colorscheme solarized
 
 set nowrap
 
@@ -44,7 +44,12 @@ let g:tsuquyomi_disable_quickfix = 1
 
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_typescript_checkers = ['tsuquyomi', 'eslint']
-let g:syntastic_java_javac_classpath = '~/Workspace/gerrit/bazel-bin/**/*.jar:~/Workspace/gerrit/bazel-genfiles/external/**/*.jar'
+" let g:syntastic_java_javac_classpath = '~/Workspace/gerrit/bazel-bin/**/*.jar:~/Workspace/gerrit/bazel-genfiles/external/**/*.jar'
+
+if executable('./node_modules/.bin/eslint')
+    let b:syntastic_javascript_eslint_exec = './node_modules/.bin/eslint'
+    let b:syntastic_typescript_eslint_exec = './node_modules/.bin/eslint'
+endif
 
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.jsx
 
